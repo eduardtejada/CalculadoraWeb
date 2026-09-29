@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Programación Web - Calculadora</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-layout">
+        <header class="page-header">
+            <h1 class="main-title">Programación Web</h1>
+        </header>
+
+        <div class="calculator-wrapper">
+            <main class="calculator-card">
+                <header class="calculator-header">
+                    <div class="brand">
+                        <span class="calc-title">Calculadora</span>
+                    </div>
+                    <button type="button" id="btn-open-history" class="btn-history-toggle" title="Ver historial de operaciones">
+                        <span>Historial</span>
+                        <span id="history-badge" class="history-badge">0</span>
+                    </button>
+                </header>
+
+                <section class="display-container" aria-live="polite">
+                    <div id="operation-display" class="operation-display"></div>
+                    <div id="current-display" class="current-display">0</div>
+                </section>
+
+                <section class="keypad" aria-label="Teclado numérico y de operaciones">
+                    <button type="button" class="btn btn-action" data-action="all-clear" title="Borrar todo">AC</button>
+                    <button type="button" class="btn btn-action" data-action="clear-entry" title="Borrar entrada actual">C</button>
+                    <button type="button" class="btn btn-action" data-action="backspace" title="Retroceso">⌫</button>
+                    <button type="button" class="btn btn-operator" data-action="operator" data-operator="/" title="Dividir">÷</button>
+
+                    <button type="button" class="btn btn-number" data-number="7">7</button>
+                    <button type="button" class="btn btn-number" data-number="8">8</button>
+                    <button type="button" class="btn btn-number" data-number="9">9</button>
+                    <button type="button" class="btn btn-operator" data-action="operator" data-operator="*" title="Multiplicar">×</button>
+
+                    <button type="button" class="btn btn-number" data-number="4">4</button>
+                    <button type="button" class="btn btn-number" data-number="5">5</button>
+                    <button type="button" class="btn btn-number" data-number="6">6</button>
+                    <button type="button" class="btn btn-operator" data-action="operator" data-operator="-" title="Restar">−</button>
+
+                    <button type="button" class="btn btn-number" data-number="1">1</button>
+                    <button type="button" class="btn btn-number" data-number="2">2</button>
+                    <button type="button" class="btn btn-number" data-number="3">3</button>
+                    <button type="button" class="btn btn-operator" data-action="operator" data-operator="+" title="Sumar">+</button>
+
+                    <button type="button" class="btn btn-number btn-zero" data-number="0">0</button>
+                    <button type="button" class="btn btn-number" data-action="decimal">.</button>
+                    <button type="button" class="btn btn-equals" data-action="calculate" title="Calcular resultado">=</button>
+                </section>
+            </main>
+        </div>
+    </div>
+
+    <div id="history-modal-overlay" class="history-modal-overlay" aria-hidden="true">
+        <aside class="history-modal" role="dialog" aria-labelledby="history-modal-title" aria-modal="true">
+            <header class="history-modal-header">
+                <div class="history-modal-title-group">
+                    <h2 id="history-modal-title">Historial de Cálculos</h2>
+                    <span id="history-count" class="history-count">0</span>
+                </div>
+                <button type="button" id="btn-close-history" class="btn-close-history" aria-label="Cerrar historial" title="Cerrar historial">
+                    ✕
+                </button>
+            </header>
+
+            <div class="history-actions-bar">
+                <small class="storage-indicator">Guardado en localStorage</small>
+                <button type="button" id="btn-clear-history" class="btn-clear-history" title="Eliminar todo el historial permanentemente">
+                    Vaciar historial
+                </button>
+            </div>
+
+            <div class="history-body">
+                <div id="history-empty" class="history-empty">
+                    <p>No hay cálculos guardados aún.</p>
+                    <small>Las operaciones que realices se guardarán automáticamente en tu navegador.</small>
+                </div>
+                <ul id="history-list" class="history-list" aria-live="polite"></ul>
+            </div>
+
+            <footer class="history-modal-footer">
+                <small>Haz clic sobre cualquier resultado para cargarlo en la pantalla.</small>
+            </footer>
+        </aside>
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
